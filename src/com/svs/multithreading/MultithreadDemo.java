@@ -61,22 +61,20 @@ public class MultithreadDemo {
     public static void createThreadsUsingJoint() {
         createMyThreadsObjects();
 
-       /* System.out.println("Main thread starting");
-
-        // construct myThread object
-        MyThread thread = new MyThread("Child #1");
-        MyThread thread2 = new MyThread("Child #2");
-
-        MyThread thread3 = new MyThread("Child #3");*/
-
         try {
-            thread.thread.join(); // wait until specified threads ends.
+            thread.thread.setPriority(Thread.NORM_PRIORITY);
+            System.out.println("Child #1 priority is " + thread.thread.getPriority());
+            thread2.thread.setPriority(Thread.MIN_PRIORITY);
+            System.out.println("Child #2 priority is " + thread2.thread.getPriority());
+            thread3.thread.setPriority(Thread.MAX_PRIORITY);
+            System.out.println("Child #3 priority is " + thread3.thread.getPriority());
+            /*thread.thread.join(); // wait until specified threads ends.
             System.out.println("Child #1 joined");
             thread2.thread.join();
             System.out.println("Child #2 joined");
-            thread2.thread.join();
-            System.out.println("Child #3 joined");
-        } catch (InterruptedException e) {
+            thread3.thread.join();
+            System.out.println("Child #3 joined");*/
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
