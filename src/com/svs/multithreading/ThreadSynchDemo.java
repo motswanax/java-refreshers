@@ -6,10 +6,20 @@ package com.svs.multithreading;
 public class ThreadSynchDemo {
 
     public static void main(String[] args) {
-        First first = new First();
+        /*First first = new First();
         Second one = new Second(first, "welcome");
         Second two = new Second(first, "new");
-        Second three = new Second(first, "programmer");
+        Second three = new Second(first, "programmer");*/
+
+        // Example with the MyThreadExample & TargetClass
+        TargetClass targetClass = new TargetClass(); // single instance of TargetClass supplied to 3 threads
+        MyThreadExample t1 = new MyThreadExample(1, targetClass);
+        MyThreadExample t2 = new MyThreadExample(2, targetClass);
+        MyThreadExample t3 = new MyThreadExample(3, targetClass);
+
+        t1.start();
+        t2.start();
+        t3.start();
     }
 }
 
